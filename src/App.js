@@ -1,25 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import React from "react";
+import {Route, BrowserRouter} from "react-router-dom";
+import {Menu} from "./components/Menu";
+import {PostList} from "./components/PostList";
+import {Post} from "./components/Post";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="container">
+            <BrowserRouter>
+                <Menu/>
+                <Route exact path="/" render={()=><PostList/>} />
+                <Route path="/about" render={()=><h1>О нас</h1>}/>
+                <Route path="/contact-us" render={()=><h1>Контакты</h1>}/>
+                <Route path="/post" render={()=><Post/>}/>
+            </BrowserRouter>
+        </div>
+    );
 }
 
 export default App;
